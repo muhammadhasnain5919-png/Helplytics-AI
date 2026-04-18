@@ -69,6 +69,10 @@
         border: 1px solid rgba(0, 0, 0, 0.05);
         margin-bottom: 24px;
       }
+      .ai-summary-card {
+        border-left: 4px solid #288a77;
+        background: #f4f9f8;
+      }
       .logo-icon {
         width: 32px;
         height: 32px;
@@ -106,16 +110,11 @@
         text-transform: uppercase;
         color: #288a77;
       }
-      .card-title-custom {
-        font-size: 16px;
-        color: #1a1a18;
-        font-weight: 600;
-        margin-bottom: 16px;
-      }
       .tag-badge {
         font-size: 12px;
         color: #5d5d59;
-        background-color: #f0f0ed;
+        background-color: #fff;
+        border: 1px solid #dcece8;
         padding: 5px 14px;
         border-radius: 20px;
       }
@@ -124,11 +123,6 @@
         font-size: 13px;
         font-weight: 500;
         padding: 8px 20px;
-      }
-      .btn-custom-solved {
-        background-color: #e8e8e4;
-        color: #1a1a18;
-        border: none;
       }
       .helper-card {
         border-radius: 12px;
@@ -216,7 +210,7 @@
 
       <div class="row g-4">
         <div class="col-md-7">
-          <div class="card-custom p-4">
+          <div class="card-custom ai-summary-card p-4">
             <div class="card-section-label mb-3">AI SUMMARY</div>
             <div class="d-flex align-items-center mb-3">
               <div
@@ -233,18 +227,24 @@
               <span class="logo-text ms-2" style="font-size: 13px"
                 >HelpHub AI</span
               >
+              <span class="ms-auto text-muted" style="font-size: 11px"
+                >Analyzed just now</span
+              >
             </div>
             <p
-              class="text-secondary mb-4"
-              style="font-size: 13.5px; line-height: 1.6"
+              class="text-dark mb-4"
+              style="font-size: 14px; line-height: 1.6; font-style: italic"
             >
-              The user is seeking preparation assistance for upcoming
-              entry-level frontend interviews.
+              "The user is seeking a mentor for
+              <strong>mock interview sessions</strong>. They specifically need
+              help navigating the technical requirements of
+              <strong>entry-level frontend roles</strong>, focusing on both
+              behavioral preparation and coding problem-solving."
             </p>
-            <div class="d-flex gap-2 flex-wrap mb-2">
+            <div class="d-flex gap-2 flex-wrap">
               <span class="tag-badge">Interview Prep</span>
-              <span class="tag-badge">Career</span>
-              <span class="tag-badge">Frontend</span>
+              <span class="tag-badge">Career Growth</span>
+              <span class="tag-badge">Frontend Dev</span>
             </div>
           </div>
 
@@ -257,7 +257,10 @@
               >
                 I can help
               </button>
-              <button class="btn btn-custom-action btn-custom-solved">
+              <button
+                class="btn btn-custom-action btn-custom-solved"
+                style="background-color: #e8e8e4; color: #1a1a18; border: none"
+              >
                 Mark as solved
               </button>
             </div>
@@ -290,60 +293,52 @@
 
           <div class="card-custom p-4">
             <div class="card-section-label mb-3">HELPERS</div>
-            <div class="card-title-custom">People ready to support</div>
-
-            <div class="helper-card">
-              <div
-                class="d-flex align-items-start gap-3 justify-content-between mb-2"
-              >
-                <div class="d-flex gap-3">
-                  <div class="helper-avatar" style="background-color: #f57c00">
-                    AK
-                  </div>
-                  <div>
-                    <div
-                      class="user-name fw-medium text-dark"
-                      style="font-size: 14px"
-                    >
-                      Ayesha Khan
-                    </div>
-                    <p
-                      class="text-secondary mt-1 mb-0"
-                      style="font-size: 12.5px; line-height: 1.4"
-                    >
-                      Figma, UI/UX, HTML/CSS
-                    </p>
-                  </div>
-                </div>
-                <span class="trust-badge">Trust 100%</span>
-              </div>
+            <div class="fw-semibold text-dark mb-3" style="font-size: 15px">
+              People ready to support
             </div>
 
-            <div class="helper-card">
-              <div
-                class="d-flex align-items-start gap-3 justify-content-between mb-2"
-              >
-                <div class="d-flex gap-3">
-                  <div class="helper-avatar" style="background-color: #ef6c00">
-                    HA
-                  </div>
-                  <div>
-                    <div
-                      class="user-name fw-medium text-dark"
-                      style="font-size: 14px"
-                    >
-                      Hassan Ali
-                    </div>
-                    <p
-                      class="text-secondary mt-1 mb-0"
-                      style="font-size: 12.5px; line-height: 1.4"
-                    >
-                      JavaScript, React, Git/GitHub
-                    </p>
-                  </div>
+            <div
+              class="helper-card d-flex align-items-start gap-3 justify-content-between"
+            >
+              <div class="d-flex gap-3">
+                <div class="helper-avatar" style="background-color: #f57c00">
+                  AK
                 </div>
-                <span class="trust-badge">Trust 88%</span>
+                <div>
+                  <div
+                    class="user-name fw-medium text-dark"
+                    style="font-size: 14px"
+                  >
+                    Ayesha Khan
+                  </div>
+                  <p class="text-secondary mt-1 mb-0" style="font-size: 12px">
+                    Figma, UI/UX, CSS
+                  </p>
+                </div>
               </div>
+              <span class="trust-badge">100% Trust</span>
+            </div>
+
+            <div
+              class="helper-card d-flex align-items-start gap-3 justify-content-between"
+            >
+              <div class="d-flex gap-3">
+                <div class="helper-avatar" style="background-color: #ef6c00">
+                  HA
+                </div>
+                <div>
+                  <div
+                    class="user-name fw-medium text-dark"
+                    style="font-size: 14px"
+                  >
+                    Hassan Ali
+                  </div>
+                  <p class="text-secondary mt-1 mb-0" style="font-size: 12px">
+                    React, JS, Git
+                  </p>
+                </div>
+              </div>
+              <span class="trust-badge">88% Trust</span>
             </div>
           </div>
         </div>
