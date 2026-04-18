@@ -5,737 +5,686 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HelpHub AI</title>
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-      crossorigin="anonymous"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <style>
-      :root {
-        --cream: #f5f0e8;
-        --dark: #1a1a18;
-        --olive: #3d4a2e;
-        --gold: #c8a84b;
-        --warm-gray: #e8e3d8;
-        --text-muted: #6b6b5e;
-        --card-bg: #ffffff;
-        --border: #d8d3c8;
-      }
-
-      * {
+      *,
+      *::before,
+      *::after {
         box-sizing: border-box;
         margin: 0;
         padding: 0;
       }
-
       body {
-        font-family: "DM Sans", sans-serif;
-        background-color: var(--cream);
-        color: var(--dark);
-        font-size: 15px;
-        line-height: 1.6;
+        font-family: "Inter", sans-serif;
+        background: #ffffff;
+        color: #1a1a18;
+        min-height: 100vh;
       }
 
       /* ── NAV ── */
       nav {
-        background: var(--cream);
-        border-bottom: 1px solid var(--border);
-        padding: 0 2rem;
+        background: linear-gradient(
+          to right,
+          #e8e4d8 0%,
+          #f0ede4 25%,
+          #f8f6f0 55%,
+          #fdfcfa 80%,
+          #ffffff 100%
+        );
+        border-bottom: 1px solid #e8e8e4;
         height: 56px;
         display: flex;
         align-items: center;
+        padding: 0;
+      }
+
+      .nav-inner {
+        max-width: 940px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 0 24px;
+        display: flex;
+        align-items: center;
         justify-content: space-between;
-        position: sticky;
-        top: 0;
-        z-index: 100;
+        height: 100%;
       }
 
-      .nav-left {
+      .nav-l {
         display: flex;
         align-items: center;
-        gap: 2rem;
+        gap: 24px;
       }
 
-      .logo {
+      .logo-wrap {
         display: flex;
         align-items: center;
-        gap: 0.5rem;
-        font-weight: 600;
-        font-size: 15px;
-        color: var(--dark);
+        gap: 8px;
         text-decoration: none;
       }
-
       .logo-icon {
         width: 28px;
         height: 28px;
-        background: var(--dark);
+        background: #2d8b78;
         color: #fff;
         border-radius: 6px;
+        font-size: 13px;
+        font-weight: 700;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 13px;
-        font-weight: 700;
+      }
+      .logo-text {
+        font-size: 14px;
+        font-weight: 600;
+        color: #1a1a18;
       }
 
       .nav-links {
         display: flex;
-        gap: 1.5rem;
+        gap: 2px;
         list-style: none;
       }
       .nav-links a {
+        font-size: 13.5px;
+        color: #555550;
         text-decoration: none;
-        color: var(--text-muted);
-        font-size: 14px;
-        transition: color 0.2s;
-      }
-      .nav-links a:hover {
-        color: var(--dark);
+        padding: 5px 13px;
+        border-radius: 20px;
       }
       .nav-links .active {
-        color: var(--dark);
+        color: #1a1a18;
         font-weight: 500;
-      }
-
-      .nav-right {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-      }
-
-      .nav-signal {
-        font-size: 13px;
-        color: var(--text-muted);
-        border: 1px solid var(--border);
-        padding: 5px 14px;
+        background: #f0ede8;
+        border: 1px solid #d0cdc5;
+        padding: 4px 13px;
         border-radius: 20px;
       }
 
-      .btn-join {
-        background: var(--dark);
+      .nav-r {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .nav-signal {
+        font-size: 13px;
+        color: #555550;
+        border: 1px solid #e2e2de;
+        padding: 5px 14px;
+        border-radius: 20px;
+        background: transparent;
+      }
+      .btn-teal {
+        background: #2d8b78;
         color: #fff;
         border: none;
         padding: 8px 18px;
-        border-radius: 8px;
-        font-size: 14px;
+        border-radius: 20px;
+        font-size: 13.5px;
         font-weight: 500;
         cursor: pointer;
-        transition: opacity 0.2s;
+        font-family: inherit;
       }
-      .btn-join:hover {
-        opacity: 0.85;
+
+      /* ── PAGE WRAPPER ── */
+      .page {
+        max-width: 940px;
+        margin: 0 auto;
+        padding: 0 24px;
       }
 
       /* ── HERO ── */
       .hero {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 2rem;
-        padding: 3rem 2.5rem 2rem;
-        max-width: 1100px;
-        margin: 0 auto;
+        gap: 20px;
+        padding: 32px 0 30px;
+        align-items: start;
       }
 
-      .hero-left {
-        padding-right: 2rem;
-      }
-
-      .event-label {
-        font-size: 11px;
+      .eyebrow {
+        font-size: 10.5px;
         font-weight: 600;
         letter-spacing: 0.08em;
         text-transform: uppercase;
-        color: var(--text-muted);
-        margin-bottom: 1rem;
+        color: #888880;
+        margin-bottom: 14px;
       }
 
-      .hero-title {
+      h1.big {
         font-family: "DM Serif Display", serif;
-        font-size: 3.4rem;
-        line-height: 1.08;
-        color: var(--dark);
-        margin-bottom: 1.2rem;
+        font-size: 54px;
+        line-height: 1.04;
+        color: #1a1a18;
+        font-weight: 400;
+        margin-bottom: 16px;
       }
 
-      .hero-sub {
-        font-size: 14px;
-        color: var(--text-muted);
+      .hero-desc {
+        font-size: 13.5px;
+        color: #666660;
+        line-height: 1.65;
         max-width: 380px;
-        margin-bottom: 1.8rem;
-        line-height: 1.7;
+        margin-bottom: 24px;
       }
 
-      .hero-btns {
+      .btn-row {
         display: flex;
-        gap: 0.8rem;
-        margin-bottom: 2.2rem;
+        gap: 10px;
+        margin-bottom: 28px;
       }
 
-      .btn-primary-dark {
-        background: var(--dark);
+      .btn-solid {
+        background: #2d8b78;
         color: #fff;
         border: none;
-        padding: 11px 22px;
-        border-radius: 8px;
-        font-size: 14px;
+        padding: 10px 20px;
+        border-radius: 20px;
+        font-size: 13.5px;
         font-weight: 500;
         cursor: pointer;
-        transition: opacity 0.2s;
+        font-family: inherit;
       }
-      .btn-primary-dark:hover {
-        opacity: 0.85;
-      }
-
-      .btn-outline-dark {
-        background: transparent;
-        color: var(--dark);
-        border: 1.5px solid var(--border);
-        padding: 11px 22px;
-        border-radius: 8px;
-        font-size: 14px;
+      .btn-outline {
+        background: #fff;
+        color: #1a1a18;
+        border: 1.5px solid #d8d8d4;
+        padding: 10px 20px;
+        border-radius: 20px;
+        font-size: 13.5px;
         font-weight: 500;
         cursor: pointer;
-        transition: border-color 0.2s;
-      }
-      .btn-outline-dark:hover {
-        border-color: var(--dark);
+        font-family: inherit;
       }
 
       .stats {
         display: flex;
-        gap: 1rem;
+        gap: 10px;
       }
-
-      .stat-card {
-        background: var(--card-bg);
-        border: 1px solid var(--border);
+      .stat {
+        background: #fff;
+        border: 1px solid #e4e4e0;
         border-radius: 12px;
-        padding: 1rem 1.2rem;
+        padding: 14px 14px 12px;
         flex: 1;
       }
-
-      .stat-label {
-        font-size: 10px;
+      .stat-lbl {
+        font-size: 9.5px;
         font-weight: 600;
-        letter-spacing: 0.08em;
+        letter-spacing: 0.09em;
         text-transform: uppercase;
-        color: var(--text-muted);
-        margin-bottom: 0.3rem;
+        color: #999990;
+        margin-bottom: 3px;
       }
-
       .stat-num {
         font-family: "DM Serif Display", serif;
-        font-size: 2rem;
-        color: var(--dark);
+        font-size: 34px;
+        color: #1a1a18;
         line-height: 1.1;
-        margin-bottom: 0.25rem;
+        margin-bottom: 5px;
+        font-weight: 400;
+      }
+      .stat-txt {
+        font-size: 11.5px;
+        color: #888880;
+        line-height: 1.45;
       }
 
-      .stat-desc {
-        font-size: 12px;
-        color: var(--text-muted);
-        line-height: 1.4;
-      }
-
-      /* ── HERO RIGHT CARD ── */
-      .hero-right-card {
-        background: var(--olive);
+      /* ── HERO RIGHT ── */
+      .hero-r {
+        background: #1c2415;
         border-radius: 16px;
-        padding: 2rem;
+        padding: 26px 24px 22px;
         color: #fff;
         position: relative;
-        overflow: hidden;
       }
-
-      .live-label {
-        font-size: 10px;
-        font-weight: 600;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.6);
-        margin-bottom: 1rem;
-      }
-
-      .live-dot {
-        width: 42px;
-        height: 42px;
-        background: var(--gold);
+      .gold-circle {
+        width: 48px;
+        height: 48px;
+        background: #c8a03c;
         border-radius: 50%;
         position: absolute;
-        top: 1.8rem;
-        right: 1.8rem;
+        top: 24px;
+        right: 24px;
       }
-
-      .hero-right-title {
-        font-family: "DM Serif Display", serif;
-        font-size: 2rem;
-        line-height: 1.15;
-        margin-bottom: 1rem;
-        max-width: 220px;
-      }
-
-      .hero-right-sub {
-        font-size: 12.5px;
-        color: rgba(255, 255, 255, 0.7);
-        line-height: 1.6;
-        margin-bottom: 1.5rem;
-      }
-
-      .feature-mini {
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 10px;
-        padding: 0.9rem 1rem;
-        margin-bottom: 0.7rem;
-      }
-
-      .feature-mini-title {
-        font-size: 13px;
-        font-weight: 600;
-        color: #fff;
-        margin-bottom: 0.3rem;
-      }
-
-      .feature-mini-desc {
-        font-size: 12px;
-        color: rgba(255, 255, 255, 0.65);
-        line-height: 1.5;
-      }
-
-      .feature-mini-pct {
-        font-family: "DM Serif Display", serif;
-        font-size: 1.5rem;
-        color: #fff;
-        margin-bottom: 0.3rem;
-      }
-
-      /* ── SECTION LABELS ── */
-      .section-label {
-        font-size: 10px;
+      .live-lbl {
+        font-size: 9.5px;
         font-weight: 600;
         letter-spacing: 0.1em;
         text-transform: uppercase;
-        color: var(--text-muted);
-        margin-bottom: 0.6rem;
+        color: rgba(255, 255, 255, 0.45);
+        margin-bottom: 16px;
+      }
+      .hero-r h2 {
+        font-family: "DM Serif Display", serif;
+        font-size: 32px;
+        line-height: 1.14;
+        font-weight: 400;
+        margin-bottom: 14px;
+        max-width: 250px;
+        color: #fff;
+      }
+      .hero-r-sub {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.6);
+        line-height: 1.7;
+        margin-bottom: 20px;
+      }
+      .fcard {
+        background: #f7f4ee;
+        border-radius: 10px;
+        padding: 14px 16px;
+        margin-bottom: 10px;
+      }
+      .fcard-title {
+        font-size: 13.5px;
+        font-weight: 600;
+        color: #1a1a18;
+        margin-bottom: 5px;
+      }
+      .fcard-desc {
+        font-size: 12px;
+        color: #666660;
+        line-height: 1.55;
+      }
+      .fcard-pct {
+        font-family: "DM Serif Display", serif;
+        font-size: 24px;
+        color: #1a1a18;
+        font-weight: 400;
+        margin-bottom: 4px;
+      }
+
+      /* ── DIVIDER ── */
+      .divider {
+        border: none;
+        border-top: 1px solid #e8e8e4;
+        margin: 0;
       }
 
       /* ── CORE FLOW ── */
-      .core-flow {
-        padding: 3rem 2.5rem;
-        max-width: 1100px;
-        margin: 0 auto;
+      .sec-core {
+        padding: 32px 0 28px;
       }
-
-      .core-flow-header {
+      .sec-eyebrow {
+        font-size: 9.5px;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #999990;
+        margin-bottom: 7px;
+      }
+      .sec-head {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        margin-bottom: 1.8rem;
+        margin-bottom: 18px;
       }
-
-      .section-title {
+      .sec-title {
         font-family: "DM Serif Display", serif;
-        font-size: 2.2rem;
-        color: var(--dark);
+        font-size: 34px;
+        color: #1a1a18;
+        font-weight: 400;
       }
-
-      .btn-sm-outline {
-        border: 1.5px solid var(--border);
-        background: transparent;
-        padding: 8px 16px;
-        border-radius: 8px;
+      .btn-sm {
+        border: 1.5px solid #d8d8d4;
+        background: #fff;
+        padding: 7px 16px;
+        border-radius: 20px;
         font-size: 13px;
-        cursor: pointer;
-        color: var(--dark);
         font-weight: 500;
-        transition: border-color 0.2s;
+        cursor: pointer;
+        font-family: inherit;
+        color: #1a1a18;
+        white-space: nowrap;
       }
-      .btn-sm-outline:hover {
-        border-color: var(--dark);
-      }
-
-      .flow-cards {
+      .flow-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 1rem;
+        gap: 10px;
       }
-
       .flow-card {
-        background: var(--card-bg);
-        border: 1px solid var(--border);
+        background: #fff;
+        border: 1px solid #e4e4e0;
         border-radius: 12px;
-        padding: 1.5rem;
+        padding: 20px 18px;
       }
-
       .flow-card h3 {
-        font-size: 15px;
+        font-size: 14px;
         font-weight: 600;
-        margin-bottom: 0.5rem;
+        margin-bottom: 7px;
+        color: #1a1a18;
       }
       .flow-card p {
-        font-size: 13px;
-        color: var(--text-muted);
+        font-size: 12.5px;
+        color: #888880;
         line-height: 1.6;
       }
 
       /* ── FEATURED REQUESTS ── */
-      .featured {
-        padding: 0 2.5rem 3rem;
-        max-width: 1100px;
-        margin: 0 auto;
+      .sec-feat {
+        padding: 28px 0 40px;
       }
-
-      .featured-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 1.5rem;
-      }
-
-      .request-cards {
+      .req-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 1rem;
+        gap: 10px;
       }
-
-      .request-card {
-        background: var(--card-bg);
-        border: 1px solid var(--border);
+      .req-card {
+        background: #fff;
+        border: 1px solid #e4e4e0;
         border-radius: 12px;
-        padding: 1.2rem;
+        padding: 16px 16px 14px;
+        display: flex;
+        flex-direction: column;
       }
-
       .tags {
         display: flex;
         flex-wrap: wrap;
-        gap: 0.4rem;
-        margin-bottom: 0.8rem;
+        gap: 5px;
+        margin-bottom: 10px;
       }
-
       .tag {
         font-size: 11px;
+        font-weight: 500;
         padding: 3px 10px;
         border-radius: 20px;
-        border: 1px solid var(--border);
-        color: var(--text-muted);
-        font-weight: 500;
+        border: 1px solid #e4e4e0;
+        color: #888880;
+      }
+      .t-wb {
+        background: #ebf0ff;
+        border-color: #c4d0f0;
+        color: #2a4aaa;
+      }
+      .t-ds {
+        background: #f0ebff;
+        border-color: #d0c4f0;
+        color: #5a2aaa;
+      }
+      .t-hi {
+        background: #ffebeb;
+        border-color: #f0c4c4;
+        color: #aa2a2a;
+      }
+      .t-md {
+        background: #fffaeb;
+        border-color: #f0e0a0;
+        color: #7a5c10;
+      }
+      .t-sv {
+        background: #ebffeb;
+        border-color: #b0e0b0;
+        color: #1a7a1a;
+      }
+      .t-op {
+        background: #f4f4f0;
+        border-color: #e0e0dc;
+        color: #888880;
       }
 
-      .tag-cat {
-        background: #e8f0fe;
-        border-color: #c5d5f5;
-        color: #3257b5;
-      }
-      .tag-high {
-        background: #fde8e8;
-        border-color: #f5c5c5;
-        color: #b53232;
-      }
-      .tag-med {
-        background: #fff8e8;
-        border-color: #f5e8c5;
-        color: #8a6a1a;
-      }
-      .tag-solved {
-        background: #e8fde8;
-        border-color: #c5f5c5;
-        color: #1e7a1e;
-      }
-      .tag-open {
-        background: var(--warm-gray);
-        border-color: var(--border);
-        color: var(--text-muted);
-      }
-
-      .request-title {
-        font-size: 14px;
+      .req-title {
+        font-size: 13.5px;
         font-weight: 600;
-        margin-bottom: 0.4rem;
+        margin-bottom: 6px;
         line-height: 1.4;
+        color: #1a1a18;
       }
-      .request-body {
+      .req-body {
+        font-size: 12px;
+        color: #888880;
+        margin-bottom: 9px;
+        line-height: 1.55;
+        flex: 1;
+      }
+      .req-name {
         font-size: 12.5px;
-        color: var(--text-muted);
-        margin-bottom: 0.8rem;
-        line-height: 1.6;
-      }
-
-      .request-meta {
-        font-size: 12px;
-        font-weight: 500;
-        margin-bottom: 0.25rem;
-      }
-      .request-sub {
-        font-size: 11.5px;
-        color: var(--text-muted);
-        margin-bottom: 0.8rem;
-      }
-
-      .request-footer {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
-
-      .open-details {
-        font-size: 12px;
         font-weight: 600;
-        color: var(--dark);
+        color: #1a1a18;
+        margin-bottom: 2px;
+      }
+      .req-loc {
+        font-size: 11.5px;
+        color: #aaa;
+        margin-bottom: 8px;
+      }
+      .req-foot {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-top: auto;
+      }
+      .open-det {
+        font-size: 12px;
+        font-weight: 700;
+        color: #1a1a18;
         text-decoration: none;
-        line-height: 1.3;
+        line-height: 1.35;
+        text-align: right;
       }
 
       /* ── FOOTER ── */
       footer {
-        padding: 1.5rem 2.5rem;
-        border-top: 1px solid var(--border);
+        border-top: 1px solid #e8e8e4;
+        padding: 16px 0 18px;
         font-size: 12px;
-        color: var(--text-muted);
-        max-width: 1100px;
-        margin: 0 auto;
-      }
-
-      /* ── DIVIDER ── */
-      .section-divider {
-        border: none;
-        border-top: 1px solid var(--border);
-        margin: 0 2.5rem;
-        max-width: calc(1100px - 5rem);
-        margin-left: auto;
-        margin-right: auto;
+        color: #aaaaaa;
       }
     </style>
   </head>
   <body>
-    <!-- NAV -->
     <nav>
-      <div class="nav-left">
-        <a href="#" class="logo">
-          <div class="logo-icon">H</div>
-          HelpHub AI
-        </a>
-        <ul class="nav-links">
-          <li><a href="#" class="active">Home</a></li>
-          <li><a href="#">Explore</a></li>
-          <li><a href="#">Leaderboard</a></li>
-          <li><a href="#">AI Center</a></li>
-        </ul>
-      </div>
-      <div class="nav-right">
-        <span class="nav-signal">Live community signals</span>
-        <button class="btn-join">Join the platform</button>
+      <div class="nav-inner">
+        <div class="nav-l">
+          <a href="#" class="logo-wrap">
+            <div class="logo-icon">H</div>
+            <span class="logo-text">HelpHub AI</span>
+          </a>
+          <ul class="nav-links d-flex justify-content-center">
+            <li><a href="#" class="active">Home</a></li>
+            <li><a href="#">Explore</a></li>
+            <li><a href="#">Leaderboard</a></li>
+            <li><a href="#">AI Center</a></li>
+          </ul>
+        </div>
+        <div class="nav-r">
+          <span class="nav-signal">Live community signals</span>
+          <button class="btn-teal">Join the platform</button>
+        </div>
       </div>
     </nav>
 
-    <!-- HERO -->
-    <section class="hero">
-      <!-- Left -->
-      <div class="hero-left">
-        <p class="event-label">SMIT Grand Coding Night 2026</p>
-        <h1 class="hero-title">
-          Find help faster.<br />Become help that<br />matters.
-        </h1>
-        <p class="hero-sub">
-          HelpHub AI is a community-powered support network for students,
-          mentors, creators, and builders. Ask for help, offer help, track
-          impact, and let AI surface smarter matches across the platform.
-        </p>
-        <div class="hero-btns">
-          <button class="btn-primary-dark">Open product demo</button>
-          <button class="btn-outline-dark">Post a request</button>
-        </div>
-        <div class="stats">
-          <div class="stat-card">
-            <div class="stat-label">Members</div>
-            <div class="stat-num">384+</div>
-            <div class="stat-desc">
-              Students, mentors, and helpers in the loop.
+    <div class="page">
+      <div class="hero">
+        <div class="hero-l">
+          <p class="eyebrow">SMIT Grand Coding Night 2026</p>
+          <h1 class="big">
+            Find help faster.<br />Become help that<br />matters.
+          </h1>
+          <p class="hero-desc">
+            HelpHub AI is a community-powered support network for students,
+            mentors, creators, and builders. Ask for help, offer help, track
+            impact, and let AI surface smarter matches across the platform.
+          </p>
+          <div class="btn-row">
+            <button class="btn-solid">Open product demo</button>
+            <button class="btn-outline">Post a request</button>
+          </div>
+          <div class="stats">
+            <div class="stat">
+              <div class="stat-lbl">Members</div>
+              <div class="stat-num">384+</div>
+              <div class="stat-txt">
+                Students, mentors, and helpers in the loop.
+              </div>
+            </div>
+            <div class="stat">
+              <div class="stat-lbl">Requests</div>
+              <div class="stat-num">72+</div>
+              <div class="stat-txt">
+                Support posts shared across learning journeys.
+              </div>
+            </div>
+            <div class="stat">
+              <div class="stat-lbl">Solved</div>
+              <div class="stat-num">69+</div>
+              <div class="stat-txt">
+                Problems resolved through fast community action.
+              </div>
             </div>
           </div>
-          <div class="stat-card">
-            <div class="stat-label">Requests</div>
-            <div class="stat-num">72+</div>
-            <div class="stat-desc">
-              Support posts shared across learning journeys.
+        </div>
+
+        <div class="hero-r">
+          <div class="gold-circle"></div>
+          <p class="live-lbl">Live Product Feel</p>
+          <h2>More than a form. More like an ecosystem.</h2>
+          <p class="hero-r-sub">
+            A polished multi-page experience inspired by product platforms, with
+            AI summaries, trust scores, contribution signals, notifications, and
+            leaderboard momentum built directly in HTML, CSS, JavaScript, and
+            LocalStorage.
+          </p>
+          <div class="fcard">
+            <div class="fcard-title">AI request intelligence</div>
+            <div class="fcard-desc">
+              Auto-categorization, urgency detection, tags, rewrite suggestions,
+              and trend snapshots.
             </div>
           </div>
-          <div class="stat-card">
-            <div class="stat-label">Solved</div>
-            <div class="stat-num">69+</div>
-            <div class="stat-desc">
-              Problems resolved through fast community action.
+          <div class="fcard">
+            <div class="fcard-title">Community trust graph</div>
+            <div class="fcard-desc">
+              Badges, helper rankings, trust score boosts, and visible
+              contribution history.
+            </div>
+          </div>
+          <div class="fcard">
+            <div class="fcard-pct">100%</div>
+            <div class="fcard-desc">
+              Top trust score currently active across the sample mentor network.
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Right card -->
-      <div class="hero-right-card">
-        <div class="live-dot"></div>
-        <p class="live-label">Live Product Feel</p>
-        <h2 class="hero-right-title">
-          More than a form. More like an ecosystem.
-        </h2>
-        <p class="hero-right-sub">
-          A polished multi-page experience inspired by product platforms, with
-          AI summaries, trust scores, contribution signals, notifications, and
-          leaderboard momentum built directly in HTML, CSS, JavaScript, and
-          LocalStorage.
-        </p>
-        <div class="feature-mini">
-          <div class="feature-mini-title">AI request intelligence</div>
-          <div class="feature-mini-desc">
-            Auto-categorization, urgency detection, tags, rewrite suggestions,
-            and trend snapshots.
-          </div>
+      <hr class="divider" />
+
+      <div class="sec-core">
+        <p class="sec-eyebrow">Core Flow</p>
+        <div class="sec-head">
+          <h2 class="sec-title">From struggling alone to solving together</h2>
+          <button class="btn-sm">Try onboarding AI</button>
         </div>
-        <div class="feature-mini">
-          <div class="feature-mini-title">Community trust graph</div>
-          <div class="feature-mini-desc">
-            Badges, helper rankings, trust score boosts, and visible
-            contribution history.
+        <div class="flow-grid">
+          <div class="flow-card">
+            <h3>Ask for help clearly</h3>
+            <p>
+              Create structured requests with category, urgency, AI suggestions,
+              and tags that attract the right people.
+            </p>
           </div>
-        </div>
-        <div class="feature-mini">
-          <div class="feature-mini-pct">100%</div>
-          <div class="feature-mini-desc">
-            Top trust score currently active across the sample mentor network.
+          <div class="flow-card">
+            <h3>Discover the right people</h3>
+            <p>
+              Use the explore feed, helper lists, notifications, and messaging
+              to move quickly once a match happens.
+            </p>
+          </div>
+          <div class="flow-card">
+            <h3>Track real contribution</h3>
+            <p>
+              Trust scores, badges, solved requests, and rankings help the
+              community recognize meaningful support.
+            </p>
           </div>
         </div>
       </div>
-    </section>
 
-    <hr class="section-divider" />
+      <hr class="divider" />
 
-    <!-- CORE FLOW -->
-    <section class="core-flow">
-      <p class="section-label">Core Flow</p>
-      <div class="core-flow-header">
-        <h2 class="section-title">From struggling alone to solving together</h2>
-        <button class="btn-sm-outline">Try onboarding AI</button>
-      </div>
-      <div class="flow-cards">
-        <div class="flow-card">
-          <h3>Ask for help clearly</h3>
-          <p>
-            Create structured requests with category, urgency, AI suggestions,
-            and tags that attract the right people.
-          </p>
+      <div class="sec-feat">
+        <p class="sec-eyebrow">Featured Requests</p>
+        <div class="sec-head">
+          <h2 class="sec-title">Community problems currently in motion</h2>
+          <button class="btn-sm">View full feed</button>
         </div>
-        <div class="flow-card">
-          <h3>Discover the right people</h3>
-          <p>
-            Use the explore feed, helper lists, notifications, and messaging to
-            move quickly once a match happens.
-          </p>
-        </div>
-        <div class="flow-card">
-          <h3>Track real contribution</h3>
-          <p>
-            Trust scores, badges, solved requests, and rankings help the
-            community recognize meaningful support.
-          </p>
-        </div>
-      </div>
-    </section>
+        <div class="req-grid">
+          <div class="req-card">
+            <div class="tags">
+              <span class="tag t-wb">Web Development</span>
+              <span class="tag t-hi">High</span>
+              <span class="tag t-sv">Solved</span>
+            </div>
+            <div class="req-title">Need help</div>
+            <div class="req-body">helpn needed</div>
+            <div class="req-name">Ayesha Khan</div>
+            <div class="req-loc">Karachi • 1 helper interested</div>
+            <div class="req-foot">
+              <span></span>
+              <a href="#" class="open-det">Open<br />details</a>
+            </div>
+          </div>
 
-    <hr class="section-divider" />
+          <div class="req-card">
+            <div class="tags">
+              <span class="tag t-wb">Web Development</span>
+              <span class="tag t-hi">High</span>
+              <span class="tag t-sv">Solved</span>
+            </div>
+            <div class="req-title">
+              Need help making my portfolio responsive before demo day
+            </div>
+            <div class="req-body">
+              My HTML/CSS portfolio breaks on tablets and I need layout guidance
+              before tomorrow evening.
+            </div>
+            <div class="tags" style="margin-bottom: 9px">
+              <span class="tag">HTML/CSS</span>
+              <span class="tag">Responsive</span>
+              <span class="tag">Portfolio</span>
+            </div>
+            <div class="req-name">Sara Noor</div>
+            <div class="req-loc">Karachi • 1 helper interested</div>
+            <div class="req-foot">
+              <span></span>
+              <a href="#" class="open-det">Open<br />details</a>
+            </div>
+          </div>
 
-    <!-- FEATURED REQUESTS -->
-    <section class="featured">
-      <p class="section-label">Featured Requests</p>
-      <div class="featured-header">
-        <h2 class="section-title">Community problems currently in motion</h2>
-        <button class="btn-sm-outline">View full feed</button>
-      </div>
-      <div class="request-cards">
-        <!-- Card 1 -->
-        <div class="request-card">
-          <div class="tags">
-            <span class="tag tag-cat">Web Development</span>
-            <span class="tag tag-high">High</span>
-            <span class="tag tag-solved">Solved</span>
-          </div>
-          <div class="request-title">Need help</div>
-          <div class="request-body">helpn needed</div>
-          <div class="request-meta">Ayesha Khan</div>
-          <div class="request-sub">Karachi • 1 helper interested</div>
-          <div class="request-footer">
-            <span></span>
-            <a href="#" class="open-details">Open<br />details</a>
-          </div>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="request-card">
-          <div class="tags">
-            <span class="tag tag-cat">Web Development</span>
-            <span class="tag tag-high">High</span>
-            <span class="tag tag-solved">Solved</span>
-          </div>
-          <div class="request-title">
-            Need help making my portfolio responsive before demo day
-          </div>
-          <div class="request-body">
-            My HTML/CSS portfolio breaks on tablets and I need layout guidance
-            before tomorrow evening.
-          </div>
-          <div class="tags" style="margin-top: -0.2rem">
-            <span class="tag">HTML/CSS</span>
-            <span class="tag">Responsive</span>
-            <span class="tag">Portfolio</span>
-          </div>
-          <div class="request-meta">Sara Noor</div>
-          <div class="request-sub">Karachi • 1 helper interested</div>
-          <div class="request-footer">
-            <span></span>
-            <a href="#" class="open-details">Open<br />details</a>
-          </div>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="request-card">
-          <div class="tags">
-            <span class="tag tag-cat">Design</span>
-            <span class="tag tag-med">Medium</span>
-            <span class="tag tag-open">Open</span>
-          </div>
-          <div class="request-title">
-            Looking for Figma feedback on a volunteer event poster
-          </div>
-          <div class="request-body">
-            I have a draft poster for a campus community event and want sharper
-            hierarchy, spacing, and CTA copy.
-          </div>
-          <div class="tags" style="margin-top: -0.2rem">
-            <span class="tag">Figma</span>
-            <span class="tag">Poster</span>
-            <span class="tag">Design Review</span>
-          </div>
-          <div class="request-meta">Ayesha Khan</div>
-          <div class="request-sub">Lahore • 1 helper interested</div>
-          <div class="request-footer">
-            <span></span>
-            <a href="#" class="open-details">Open<br />details</a>
+          <div class="req-card">
+            <div class="tags">
+              <span class="tag t-ds">Design</span>
+              <span class="tag t-md">Medium</span>
+              <span class="tag t-op">Open</span>
+            </div>
+            <div class="req-title">
+              Looking for Figma feedback on a volunteer event poster
+            </div>
+            <div class="req-body">
+              I have a draft poster for a campus community event and want
+              sharper hierarchy, spacing, and CTA copy.
+            </div>
+            <div class="tags" style="margin-bottom: 9px">
+              <span class="tag">Figma</span>
+              <span class="tag">Poster</span>
+              <span class="tag">Design Review</span>
+            </div>
+            <div class="req-name">Ayesha Khan</div>
+            <div class="req-loc">Lahore • 1 helper interested</div>
+            <div class="req-foot">
+              <span></span>
+              <a href="#" class="open-det">Open<br />details</a>
+            </div>
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- FOOTER -->
-    <footer>
-      HelpHub AI is built as a premium-feel, multi-page community support
-      product using HTML, CSS, JavaScript, and LocalStorage.
-    </footer>
-
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc4s9bIOgUxi8T/jzmAt5+zTUCPCPqbWb4dBh0ov0scT"
-      crossorigin="anonymous"
-    ></script>
+      <footer>
+        HelpHub AI is built as a premium-feel, multi-page community support
+        product using HTML, CSS, JavaScript, and LocalStorage.
+      </footer>
+    </div>
   </body>
 </html>
