@@ -24,7 +24,6 @@
         min-height: 100vh;
         padding-top: 56px;
       }
-
       nav.main-nav {
         position: fixed;
         top: 0;
@@ -44,7 +43,6 @@
         display: flex;
         align-items: center;
       }
-
       .logo-icon {
         width: 32px;
         height: 32px;
@@ -57,35 +55,29 @@
         align-items: center;
         justify-content: center;
       }
-
       .logo-text {
         font-size: 14px;
         font-weight: 600;
         color: #1a1a18;
       }
-
       .nav-link-item {
         font-size: 13.5px;
         color: #555550;
         text-decoration: none;
-        padding: 5px 13px;
+        padding: 6px 14px;
         border-radius: 20px;
       }
-
       .nav-link-item.active {
-        color: #1a1a18;
+        background: #2d8b78;
+        color: #fff;
         font-weight: 500;
-        background: #f0ede8;
-        border: 1px solid #d0cdc5;
       }
-
       .hero-banner {
         background: #1e2820;
         border-radius: 16px;
         padding: 48px 48px 44px;
         margin-top: 40px;
       }
-
       .hero-banner .eyebrow {
         font-size: 10px;
         font-weight: 700;
@@ -94,7 +86,6 @@
         color: rgba(255, 255, 255, 0.45);
         margin-bottom: 16px;
       }
-
       .hero-banner h1 {
         font-family: "DM Serif Display", serif;
         font-size: 52px;
@@ -103,21 +94,18 @@
         line-height: 1.08;
         margin-bottom: 18px;
       }
-
       .hero-banner p {
         font-size: 13.5px;
         color: rgba(255, 255, 255, 0.55);
         line-height: 1.65;
         margin: 0;
       }
-
       .panel {
         background: #fff;
         border-radius: 16px;
         padding: 36px 32px;
         height: 100%;
       }
-
       .panel .eyebrow {
         font-size: 9.5px;
         font-weight: 700;
@@ -126,7 +114,6 @@
         color: #2d8b78;
         margin-bottom: 10px;
       }
-
       .panel h2 {
         font-family: "DM Serif Display", serif;
         font-size: 34px;
@@ -134,32 +121,28 @@
         color: #1a1a18;
         margin-bottom: 24px;
       }
-
       .msg-item {
         border: 1px solid #e8e8e4;
         border-radius: 12px;
-        padding: 18px 18px;
+        padding: 18px;
         margin-bottom: 14px;
         display: flex;
         align-items: flex-start;
         justify-content: space-between;
         gap: 16px;
       }
-
       .msg-item .sender {
         font-size: 13.5px;
         font-weight: 600;
         color: #1a1a18;
         margin-bottom: 6px;
       }
-
       .msg-item .body {
         font-size: 12.5px;
         color: #888880;
         line-height: 1.6;
         margin: 0;
       }
-
       .msg-time {
         background: #f0ede8;
         border-radius: 50%;
@@ -175,7 +158,6 @@
         flex-shrink: 0;
         line-height: 1.3;
       }
-
       .panel label {
         font-size: 13px;
         font-weight: 500;
@@ -183,7 +165,6 @@
         margin-bottom: 6px;
         display: block;
       }
-
       .panel select,
       .panel textarea {
         width: 100%;
@@ -198,7 +179,6 @@
         margin-bottom: 18px;
         resize: none;
       }
-
       .panel select {
         appearance: none;
         -webkit-appearance: none;
@@ -207,7 +187,6 @@
         background-position: right 16px center;
         padding-right: 40px;
       }
-
       .btn-send {
         width: 100%;
         background: #2d8b78;
@@ -220,7 +199,6 @@
         font-family: "Inter", sans-serif;
         cursor: pointer;
       }
-
       @media (max-width: 576px) {
         .hero-banner {
           padding: 32px 24px;
@@ -243,9 +221,9 @@
             <span class="logo-text">HelpHub AI</span>
           </div>
           <div class="d-flex align-items-center gap-1">
-            <a href="#" class="nav-link-item">Dashboard</a>
+            <a href="index.html" class="nav-link-item">Dashboard</a>
             <a href="#" class="nav-link-item">Explore</a>
-            <a href="#" class="nav-link-item active">Messages</a>
+            <a href="messages.html" class="nav-link-item active">Messages</a>
           </div>
         </div>
       </div>
@@ -260,13 +238,11 @@
           once a match happens.
         </p>
       </div>
-
       <div class="row g-4 align-items-stretch">
         <div class="col-12 col-md-7">
           <div class="panel">
             <p class="eyebrow">Conversation Stream</p>
             <h2>Recent messages</h2>
-
             <div class="msg-item">
               <div>
                 <p class="sender">Ayesha Khan → Sara Noor</p>
@@ -277,7 +253,6 @@
               </div>
               <div class="msg-time">09:45<br />AM</div>
             </div>
-
             <div class="msg-item">
               <div>
                 <p class="sender">Hassan Ali → Ayesha Khan</p>
@@ -290,30 +265,25 @@
             </div>
           </div>
         </div>
-
         <div class="col-12 col-md-5">
           <div class="panel">
             <p class="eyebrow">Send Message</p>
             <h2>Start a conversation</h2>
-
             <label>To</label>
             <select>
               <option>Ayesha Khan</option>
               <option>Sara Noor</option>
               <option>Hassan Ali</option>
             </select>
-
             <label>Message</label>
             <textarea
               rows="6"
               placeholder="Share support details, ask for files, or suggest next steps."
             ></textarea>
-
             <button class="btn-send">Send</button>
           </div>
         </div>
       </div>
-
       <div style="height: 48px"></div>
     </div>
 

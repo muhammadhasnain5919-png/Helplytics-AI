@@ -68,15 +68,14 @@
         font-size: 13.5px;
         color: #555550;
         text-decoration: none;
-        padding: 5px 13px;
+        padding: 6px 14px;
         border-radius: 20px;
       }
 
       .nav-link-item.active {
-        color: #1a1a18;
+        background: #2d8b78;
+        color: #fff;
         font-weight: 500;
-        background: #f0ede8;
-        border: 1px solid #d0cdc5;
       }
 
       .hero-banner {
@@ -152,17 +151,28 @@
         color: #aaaaaa;
       }
 
-      .notif-badge {
-        font-size: 11.5px;
-        font-weight: 600;
+      .badge-unread {
+        font-size: 12px;
+        font-weight: 500;
         color: #1a1a18;
         white-space: nowrap;
         flex-shrink: 0;
+        border: 1.5px solid #d8d8d4;
+        border-radius: 20px;
+        padding: 5px 16px;
+        background: #fff;
       }
 
-      .notif-badge.read {
-        color: #aaaaaa;
+      .badge-read {
+        font-size: 12px;
         font-weight: 400;
+        color: #aaaaaa;
+        white-space: nowrap;
+        flex-shrink: 0;
+        border: 1.5px solid #e8e8e4;
+        border-radius: 20px;
+        padding: 5px 16px;
+        background: #fff;
       }
 
       @media (max-width: 576px) {
@@ -210,7 +220,7 @@
             <p class="notif-title">"Need help" was marked as solved</p>
             <p class="notif-meta">Status • Just now</p>
           </div>
-          <span class="notif-badge">Unread</span>
+          <span class="badge-unread">Unread</span>
         </div>
 
         <div class="notif-row">
@@ -218,7 +228,7 @@
             <p class="notif-title">Ayesha Khan offered help on "Need help"</p>
             <p class="notif-meta">Match • Just now</p>
           </div>
-          <span class="notif-badge">Unread</span>
+          <span class="badge-unread">Unread</span>
         </div>
 
         <div class="notif-row">
@@ -228,7 +238,7 @@
             </p>
             <p class="notif-meta">Request • Just now</p>
           </div>
-          <span class="notif-badge">Unread</span>
+          <span class="badge-unread">Unread</span>
         </div>
 
         <div class="notif-row">
@@ -239,7 +249,7 @@
             </p>
             <p class="notif-meta">Status • Just now</p>
           </div>
-          <span class="notif-badge">Unread</span>
+          <span class="badge-unread">Unread</span>
         </div>
 
         <div class="notif-row">
@@ -250,7 +260,7 @@
             </p>
             <p class="notif-meta">Status • Just now</p>
           </div>
-          <span class="notif-badge">Unread</span>
+          <span class="badge-unread">Unread</span>
         </div>
 
         <div class="notif-row">
@@ -261,7 +271,7 @@
             </p>
             <p class="notif-meta">Status • Just now</p>
           </div>
-          <span class="notif-badge">Unread</span>
+          <span class="badge-unread">Unread</span>
         </div>
 
         <div class="notif-row">
@@ -271,7 +281,7 @@
             </p>
             <p class="notif-meta">Match • 12 min ago</p>
           </div>
-          <span class="notif-badge">Unread</span>
+          <span class="badge-unread">Unread</span>
         </div>
 
         <div class="notif-row">
@@ -281,7 +291,7 @@
             </p>
             <p class="notif-meta">Reputation • 1 hr ago</p>
           </div>
-          <span class="notif-badge">Unread</span>
+          <span class="badge-unread">Unread</span>
         </div>
 
         <div class="notif-row">
@@ -291,7 +301,7 @@
             </p>
             <p class="notif-meta">Insight • Today</p>
           </div>
-          <span class="notif-badge read">Read</span>
+          <span class="badge-read">Read</span>
         </div>
       </div>
 
