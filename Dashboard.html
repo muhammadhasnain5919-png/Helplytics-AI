@@ -1,0 +1,741 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HelpHub AI</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --cream: #f5f0e8;
+        --dark: #1a1a18;
+        --olive: #3d4a2e;
+        --gold: #c8a84b;
+        --warm-gray: #e8e3d8;
+        --text-muted: #6b6b5e;
+        --card-bg: #ffffff;
+        --border: #d8d3c8;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "DM Sans", sans-serif;
+        background-color: var(--cream);
+        color: var(--dark);
+        font-size: 15px;
+        line-height: 1.6;
+      }
+
+      /* ── NAV ── */
+      nav {
+        background: var(--cream);
+        border-bottom: 1px solid var(--border);
+        padding: 0 2rem;
+        height: 56px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .nav-left {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-weight: 600;
+        font-size: 15px;
+        color: var(--dark);
+        text-decoration: none;
+      }
+
+      .logo-icon {
+        width: 28px;
+        height: 28px;
+        background: var(--dark);
+        color: #fff;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 1.5rem;
+        list-style: none;
+      }
+      .nav-links a {
+        text-decoration: none;
+        color: var(--text-muted);
+        font-size: 14px;
+        transition: color 0.2s;
+      }
+      .nav-links a:hover {
+        color: var(--dark);
+      }
+      .nav-links .active {
+        color: var(--dark);
+        font-weight: 500;
+      }
+
+      .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .nav-signal {
+        font-size: 13px;
+        color: var(--text-muted);
+        border: 1px solid var(--border);
+        padding: 5px 14px;
+        border-radius: 20px;
+      }
+
+      .btn-join {
+        background: var(--dark);
+        color: #fff;
+        border: none;
+        padding: 8px 18px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: opacity 0.2s;
+      }
+      .btn-join:hover {
+        opacity: 0.85;
+      }
+
+      /* ── HERO ── */
+      .hero {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        padding: 3rem 2.5rem 2rem;
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+
+      .hero-left {
+        padding-right: 2rem;
+      }
+
+      .event-label {
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        margin-bottom: 1rem;
+      }
+
+      .hero-title {
+        font-family: "DM Serif Display", serif;
+        font-size: 3.4rem;
+        line-height: 1.08;
+        color: var(--dark);
+        margin-bottom: 1.2rem;
+      }
+
+      .hero-sub {
+        font-size: 14px;
+        color: var(--text-muted);
+        max-width: 380px;
+        margin-bottom: 1.8rem;
+        line-height: 1.7;
+      }
+
+      .hero-btns {
+        display: flex;
+        gap: 0.8rem;
+        margin-bottom: 2.2rem;
+      }
+
+      .btn-primary-dark {
+        background: var(--dark);
+        color: #fff;
+        border: none;
+        padding: 11px 22px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: opacity 0.2s;
+      }
+      .btn-primary-dark:hover {
+        opacity: 0.85;
+      }
+
+      .btn-outline-dark {
+        background: transparent;
+        color: var(--dark);
+        border: 1.5px solid var(--border);
+        padding: 11px 22px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: border-color 0.2s;
+      }
+      .btn-outline-dark:hover {
+        border-color: var(--dark);
+      }
+
+      .stats {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .stat-card {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 1rem 1.2rem;
+        flex: 1;
+      }
+
+      .stat-label {
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        margin-bottom: 0.3rem;
+      }
+
+      .stat-num {
+        font-family: "DM Serif Display", serif;
+        font-size: 2rem;
+        color: var(--dark);
+        line-height: 1.1;
+        margin-bottom: 0.25rem;
+      }
+
+      .stat-desc {
+        font-size: 12px;
+        color: var(--text-muted);
+        line-height: 1.4;
+      }
+
+      /* ── HERO RIGHT CARD ── */
+      .hero-right-card {
+        background: var(--olive);
+        border-radius: 16px;
+        padding: 2rem;
+        color: #fff;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .live-label {
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.6);
+        margin-bottom: 1rem;
+      }
+
+      .live-dot {
+        width: 42px;
+        height: 42px;
+        background: var(--gold);
+        border-radius: 50%;
+        position: absolute;
+        top: 1.8rem;
+        right: 1.8rem;
+      }
+
+      .hero-right-title {
+        font-family: "DM Serif Display", serif;
+        font-size: 2rem;
+        line-height: 1.15;
+        margin-bottom: 1rem;
+        max-width: 220px;
+      }
+
+      .hero-right-sub {
+        font-size: 12.5px;
+        color: rgba(255, 255, 255, 0.7);
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+      }
+
+      .feature-mini {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        padding: 0.9rem 1rem;
+        margin-bottom: 0.7rem;
+      }
+
+      .feature-mini-title {
+        font-size: 13px;
+        font-weight: 600;
+        color: #fff;
+        margin-bottom: 0.3rem;
+      }
+
+      .feature-mini-desc {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.65);
+        line-height: 1.5;
+      }
+
+      .feature-mini-pct {
+        font-family: "DM Serif Display", serif;
+        font-size: 1.5rem;
+        color: #fff;
+        margin-bottom: 0.3rem;
+      }
+
+      /* ── SECTION LABELS ── */
+      .section-label {
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        margin-bottom: 0.6rem;
+      }
+
+      /* ── CORE FLOW ── */
+      .core-flow {
+        padding: 3rem 2.5rem;
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+
+      .core-flow-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1.8rem;
+      }
+
+      .section-title {
+        font-family: "DM Serif Display", serif;
+        font-size: 2.2rem;
+        color: var(--dark);
+      }
+
+      .btn-sm-outline {
+        border: 1.5px solid var(--border);
+        background: transparent;
+        padding: 8px 16px;
+        border-radius: 8px;
+        font-size: 13px;
+        cursor: pointer;
+        color: var(--dark);
+        font-weight: 500;
+        transition: border-color 0.2s;
+      }
+      .btn-sm-outline:hover {
+        border-color: var(--dark);
+      }
+
+      .flow-cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+      }
+
+      .flow-card {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 1.5rem;
+      }
+
+      .flow-card h3 {
+        font-size: 15px;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+      .flow-card p {
+        font-size: 13px;
+        color: var(--text-muted);
+        line-height: 1.6;
+      }
+
+      /* ── FEATURED REQUESTS ── */
+      .featured {
+        padding: 0 2.5rem 3rem;
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+
+      .featured-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1.5rem;
+      }
+
+      .request-cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+      }
+
+      .request-card {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 1.2rem;
+      }
+
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        margin-bottom: 0.8rem;
+      }
+
+      .tag {
+        font-size: 11px;
+        padding: 3px 10px;
+        border-radius: 20px;
+        border: 1px solid var(--border);
+        color: var(--text-muted);
+        font-weight: 500;
+      }
+
+      .tag-cat {
+        background: #e8f0fe;
+        border-color: #c5d5f5;
+        color: #3257b5;
+      }
+      .tag-high {
+        background: #fde8e8;
+        border-color: #f5c5c5;
+        color: #b53232;
+      }
+      .tag-med {
+        background: #fff8e8;
+        border-color: #f5e8c5;
+        color: #8a6a1a;
+      }
+      .tag-solved {
+        background: #e8fde8;
+        border-color: #c5f5c5;
+        color: #1e7a1e;
+      }
+      .tag-open {
+        background: var(--warm-gray);
+        border-color: var(--border);
+        color: var(--text-muted);
+      }
+
+      .request-title {
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 0.4rem;
+        line-height: 1.4;
+      }
+      .request-body {
+        font-size: 12.5px;
+        color: var(--text-muted);
+        margin-bottom: 0.8rem;
+        line-height: 1.6;
+      }
+
+      .request-meta {
+        font-size: 12px;
+        font-weight: 500;
+        margin-bottom: 0.25rem;
+      }
+      .request-sub {
+        font-size: 11.5px;
+        color: var(--text-muted);
+        margin-bottom: 0.8rem;
+      }
+
+      .request-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .open-details {
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--dark);
+        text-decoration: none;
+        line-height: 1.3;
+      }
+
+      /* ── FOOTER ── */
+      footer {
+        padding: 1.5rem 2.5rem;
+        border-top: 1px solid var(--border);
+        font-size: 12px;
+        color: var(--text-muted);
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+
+      /* ── DIVIDER ── */
+      .section-divider {
+        border: none;
+        border-top: 1px solid var(--border);
+        margin: 0 2.5rem;
+        max-width: calc(1100px - 5rem);
+        margin-left: auto;
+        margin-right: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAV -->
+    <nav>
+      <div class="nav-left">
+        <a href="#" class="logo">
+          <div class="logo-icon">H</div>
+          HelpHub AI
+        </a>
+        <ul class="nav-links">
+          <li><a href="#" class="active">Home</a></li>
+          <li><a href="#">Explore</a></li>
+          <li><a href="#">Leaderboard</a></li>
+          <li><a href="#">AI Center</a></li>
+        </ul>
+      </div>
+      <div class="nav-right">
+        <span class="nav-signal">Live community signals</span>
+        <button class="btn-join">Join the platform</button>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+      <!-- Left -->
+      <div class="hero-left">
+        <p class="event-label">SMIT Grand Coding Night 2026</p>
+        <h1 class="hero-title">
+          Find help faster.<br />Become help that<br />matters.
+        </h1>
+        <p class="hero-sub">
+          HelpHub AI is a community-powered support network for students,
+          mentors, creators, and builders. Ask for help, offer help, track
+          impact, and let AI surface smarter matches across the platform.
+        </p>
+        <div class="hero-btns">
+          <button class="btn-primary-dark">Open product demo</button>
+          <button class="btn-outline-dark">Post a request</button>
+        </div>
+        <div class="stats">
+          <div class="stat-card">
+            <div class="stat-label">Members</div>
+            <div class="stat-num">384+</div>
+            <div class="stat-desc">
+              Students, mentors, and helpers in the loop.
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Requests</div>
+            <div class="stat-num">72+</div>
+            <div class="stat-desc">
+              Support posts shared across learning journeys.
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Solved</div>
+            <div class="stat-num">69+</div>
+            <div class="stat-desc">
+              Problems resolved through fast community action.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right card -->
+      <div class="hero-right-card">
+        <div class="live-dot"></div>
+        <p class="live-label">Live Product Feel</p>
+        <h2 class="hero-right-title">
+          More than a form. More like an ecosystem.
+        </h2>
+        <p class="hero-right-sub">
+          A polished multi-page experience inspired by product platforms, with
+          AI summaries, trust scores, contribution signals, notifications, and
+          leaderboard momentum built directly in HTML, CSS, JavaScript, and
+          LocalStorage.
+        </p>
+        <div class="feature-mini">
+          <div class="feature-mini-title">AI request intelligence</div>
+          <div class="feature-mini-desc">
+            Auto-categorization, urgency detection, tags, rewrite suggestions,
+            and trend snapshots.
+          </div>
+        </div>
+        <div class="feature-mini">
+          <div class="feature-mini-title">Community trust graph</div>
+          <div class="feature-mini-desc">
+            Badges, helper rankings, trust score boosts, and visible
+            contribution history.
+          </div>
+        </div>
+        <div class="feature-mini">
+          <div class="feature-mini-pct">100%</div>
+          <div class="feature-mini-desc">
+            Top trust score currently active across the sample mentor network.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider" />
+
+    <!-- CORE FLOW -->
+    <section class="core-flow">
+      <p class="section-label">Core Flow</p>
+      <div class="core-flow-header">
+        <h2 class="section-title">From struggling alone to solving together</h2>
+        <button class="btn-sm-outline">Try onboarding AI</button>
+      </div>
+      <div class="flow-cards">
+        <div class="flow-card">
+          <h3>Ask for help clearly</h3>
+          <p>
+            Create structured requests with category, urgency, AI suggestions,
+            and tags that attract the right people.
+          </p>
+        </div>
+        <div class="flow-card">
+          <h3>Discover the right people</h3>
+          <p>
+            Use the explore feed, helper lists, notifications, and messaging to
+            move quickly once a match happens.
+          </p>
+        </div>
+        <div class="flow-card">
+          <h3>Track real contribution</h3>
+          <p>
+            Trust scores, badges, solved requests, and rankings help the
+            community recognize meaningful support.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider" />
+
+    <!-- FEATURED REQUESTS -->
+    <section class="featured">
+      <p class="section-label">Featured Requests</p>
+      <div class="featured-header">
+        <h2 class="section-title">Community problems currently in motion</h2>
+        <button class="btn-sm-outline">View full feed</button>
+      </div>
+      <div class="request-cards">
+        <!-- Card 1 -->
+        <div class="request-card">
+          <div class="tags">
+            <span class="tag tag-cat">Web Development</span>
+            <span class="tag tag-high">High</span>
+            <span class="tag tag-solved">Solved</span>
+          </div>
+          <div class="request-title">Need help</div>
+          <div class="request-body">helpn needed</div>
+          <div class="request-meta">Ayesha Khan</div>
+          <div class="request-sub">Karachi • 1 helper interested</div>
+          <div class="request-footer">
+            <span></span>
+            <a href="#" class="open-details">Open<br />details</a>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="request-card">
+          <div class="tags">
+            <span class="tag tag-cat">Web Development</span>
+            <span class="tag tag-high">High</span>
+            <span class="tag tag-solved">Solved</span>
+          </div>
+          <div class="request-title">
+            Need help making my portfolio responsive before demo day
+          </div>
+          <div class="request-body">
+            My HTML/CSS portfolio breaks on tablets and I need layout guidance
+            before tomorrow evening.
+          </div>
+          <div class="tags" style="margin-top: -0.2rem">
+            <span class="tag">HTML/CSS</span>
+            <span class="tag">Responsive</span>
+            <span class="tag">Portfolio</span>
+          </div>
+          <div class="request-meta">Sara Noor</div>
+          <div class="request-sub">Karachi • 1 helper interested</div>
+          <div class="request-footer">
+            <span></span>
+            <a href="#" class="open-details">Open<br />details</a>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="request-card">
+          <div class="tags">
+            <span class="tag tag-cat">Design</span>
+            <span class="tag tag-med">Medium</span>
+            <span class="tag tag-open">Open</span>
+          </div>
+          <div class="request-title">
+            Looking for Figma feedback on a volunteer event poster
+          </div>
+          <div class="request-body">
+            I have a draft poster for a campus community event and want sharper
+            hierarchy, spacing, and CTA copy.
+          </div>
+          <div class="tags" style="margin-top: -0.2rem">
+            <span class="tag">Figma</span>
+            <span class="tag">Poster</span>
+            <span class="tag">Design Review</span>
+          </div>
+          <div class="request-meta">Ayesha Khan</div>
+          <div class="request-sub">Lahore • 1 helper interested</div>
+          <div class="request-footer">
+            <span></span>
+            <a href="#" class="open-details">Open<br />details</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      HelpHub AI is built as a premium-feel, multi-page community support
+      product using HTML, CSS, JavaScript, and LocalStorage.
+    </footer>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc4s9bIOgUxi8T/jzmAt5+zTUCPCPqbWb4dBh0ov0scT"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
